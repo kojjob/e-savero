@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_cart, only: %i[ show edit update destroy ]
+  before_action :ensure_cart_owner, only: %i[ show edit update destroy ]
 
   # GET /carts or /carts.json
   def index
@@ -8,6 +10,16 @@ class CartsController < ApplicationController
 
   # GET /carts/1 or /carts/1.json
   def show
+  end
+
+  # GET /my_cart
+  def show_current
+    if user_signed_in? && current_user.cart.present?
+      @cart = current_user.cart
+      render :show
+    else
+      redirect_to root_path, alert: "You don't have a cart yet. Add some items to your cart first."
+    end
   end
 
   # GET /carts/new
@@ -60,11 +72,17 @@ class CartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
-      @cart = Cart.find(params.expect(:id))
+      @cart = Cart.find(params.require(:id))
     end
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.expect(cart: [ :user_id ])
+      params.require(:cart).permit(:user_id)
+    end
+
+    def ensure_cart_owner
+      unless current_user && @cart.user_id == current_user.id
+        redirect_to root_path, alert: "You don't have permission to access this cart."
+      end
     end
 end

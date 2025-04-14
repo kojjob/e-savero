@@ -1,0 +1,113 @@
+<style>
+  /* Default styles for light mode */
+  :root {
+    --text-color: #374151;
+    --bg-color: #ffffff;
+    --header-bg: linear-gradient(to right, #4f46e5, #9333ea, #ec4899);
+  }
+  
+  /* Dark mode styles */
+  html.dark {
+    color-scheme: dark;
+    --text-color: #f3f4f6;
+    --bg-color: #1f2937;
+    --header-bg: linear-gradient(to right, #312e81, #581c87, #831843);
+  }
+  
+  /* Header background in dark mode */
+  html.dark .bg-gradient-to-r.from-indigo-600.via-purple-600.to-pink-500 {
+    @apply from-gray-900 via-gray-900 to-gray-800;
+  }
+  
+  /* Gradient avatars in dark mode */
+  html.dark .bg-gradient-to-br.from-pink-500.to-indigo-500 {
+    @apply from-indigo-600 to-purple-600;
+  }
+  
+  /* Card and container backgrounds */
+  html.dark .bg-white {
+    @apply bg-gray-800;
+  }
+  
+  /* Main text colors */
+  html.dark .text-gray-700 {
+    @apply text-gray-200;
+  }
+  
+  html.dark .text-gray-900 {
+    @apply text-white;
+  }
+  
+  /* Shadow effects */
+  html.dark .shadow-md, html.dark .shadow-lg, html.dark .shadow-xl, html.dark .shadow-2xl {
+    @apply shadow-gray-900;
+  }
+  
+  /* Border colors */
+  html.dark .ring-black, html.dark .ring-black\/5 {
+    @apply ring-gray-700;
+  }
+  
+  html.dark .border-gray-100 {
+    @apply border-gray-700;
+  }
+  
+  /* Hover states */
+  html.dark .hover\:bg-gray-50:hover {
+    @apply hover:bg-gray-700;
+  }
+  
+  html.dark .hover\:bg-gray-100:hover {
+    @apply hover:bg-gray-700;
+  }
+  
+  html.dark .hover\:bg-indigo-50:hover {
+    @apply hover:bg-indigo-900/50;
+  }
+  
+  html.dark .hover\:bg-red-50:hover {
+    @apply hover:bg-red-900/50;
+  }
+  
+  /* Secondary text colors */
+  html.dark .text-gray-500 {
+    @apply text-gray-400;
+  }
+  
+  html.dark .text-gray-600 {
+    @apply text-gray-300;
+  }
+  
+  /* Dropdown background in dark mode */
+  html.dark .bg-white.z-50 {
+    @apply bg-gray-800 ring-1 ring-gray-700;
+  }
+  
+  /* Badge and status colors */
+  html.dark .bg-green-100.text-green-800 {
+    @apply bg-green-900 text-green-300;
+  }
+  
+  html.dark .bg-purple-100.text-purple-800 {
+    @apply bg-purple-900 text-purple-300;
+  }
+  
+  html.dark .bg-gray-100.text-gray-800 {
+    @apply bg-gray-800 text-gray-300;
+  }
+  
+  /* Background modifiers */
+  html.dark .bg-gray-50 {
+    @apply bg-gray-800;
+  }
+  
+  /* Dropdown section backgrounds */
+  html.dark .from-indigo-50.to-purple-50 {
+    @apply from-indigo-900/30 to-purple-900/30;
+  }
+  
+  /* Mobile menu overlay */
+  html.dark .bg-gray-900\/70 {
+    @apply bg-black/80;
+  }
+</style>

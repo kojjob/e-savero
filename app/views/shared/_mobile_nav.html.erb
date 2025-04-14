@@ -1,0 +1,231 @@
+<%# app/views/shared/_mobile_nav.html.erb %>
+<div class="lg:hidden" data-controller="mobile-menu">
+  <div class="fixed inset-0 flex z-40" data-mobile-menu-target="container" style="display: none;">
+    <div class="fixed inset-0" data-action="click->mobile-menu#close">
+      <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm"></div>
+    </div>
+
+    <div class="relative flex-1 flex flex-col max-w-xs w-full bg-gradient-to-br from-indigo-800 via-purple-800 to-pink-700 text-white transform transition-transform ease-in-out duration-300"
+         data-mobile-menu-target="menu">
+      <div class="absolute top-0 right-0 -mr-12 pt-2">
+        <button type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                data-action="click->mobile-menu#close">
+          <span class="sr-only">Close menu</span>
+          <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
+        <div class="flex-shrink-0 flex items-center px-4">
+          <%= link_to root_path, class: "text-2xl font-bold text-white" do %>
+            <div class="flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+              </svg>
+              <span>E-Savero</span>
+            </div>
+          <% end %>
+        </div>
+
+        <nav class="mt-8 px-4 space-y-3">
+          <%= link_to root_path, class: "flex items-center px-3 py-3 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-pink-300" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+            Home
+          <% end %>
+
+          <%= link_to products_path, class: "flex items-center px-3 py-3 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-pink-300" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+            </svg>
+            Shop
+          <% end %>
+
+          <div class="space-y-1">
+            <button type="button" class="w-full flex items-center px-3 py-3 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150"
+                    data-action="click->mobile-menu#toggleCategorySubmenu">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-pink-300" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+              </svg>
+              Categories
+              <svg class="ml-auto h-5 w-5 transition-transform duration-200" data-mobile-menu-target="categoryIcon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+
+            <div class="pl-8 mt-2 space-y-1 bg-white/5 rounded-md py-2" data-mobile-menu-target="categorySubmenu" style="display: none;">
+              <% Category.order(:name).limit(6).each do |category| %>
+                <%= link_to category_path(category), class: "flex items-center pl-4 pr-3 py-2 text-base font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-md transition duration-150" do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-300" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
+                  </svg>
+                  <%= category.name %>
+                <% end %>
+              <% end %>
+              <%= link_to categories_path, class: "flex items-center pl-4 pr-3 py-2 text-base font-medium text-pink-300 hover:text-pink-200 hover:bg-white/10 rounded-md transition duration-150" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+                View All Categories
+              <% end %>
+            </div>
+          </div>
+
+          <%= link_to my_cart_path, class: "flex items-center px-3 py-3 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+            <div class="relative mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              <% if user_signed_in? && current_user.cart.present? && current_user.cart.cart_items.count > 0 %>
+                <span class="absolute -top-2 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 rounded-full text-xs font-bold leading-none bg-pink-500 text-white min-w-[18px] min-h-[18px]">
+                  <%= current_user.cart.cart_items.sum(:quantity) %>
+                </span>
+              <% end %>
+            </div>
+            Cart
+          <% end %>
+        </nav>
+      </div>
+
+      <div class="border-t border-white/10 p-4">
+        <% if user_signed_in? %>
+          <div class="flex items-center p-2 rounded-lg bg-white/10">
+            <div class="flex-shrink-0">
+              <% if current_user.has_avatar? %>
+                <div class="h-12 w-12 rounded-full overflow-hidden">
+                  <%= image_tag current_user.avatar_url, alt: "User avatar", class: "h-full w-full object-cover" %>
+                </div>
+              <% elsif current_user.first_name.present? && current_user.last_name.present? %>
+                <div class="h-12 w-12 rounded-full bg-gradient-to-br from-pink-500 to-indigo-500 flex items-center justify-center text-white font-medium">
+                  <%= current_user.first_name[0] %><%= current_user.last_name[0] %>
+                </div>
+              <% else %>
+                <div class="h-12 w-12 rounded-full bg-gradient-to-br from-pink-500 to-indigo-500 flex items-center justify-center text-white font-medium">
+                  <%= current_user.email[0].upcase %>
+                </div>
+              <% end %>
+            </div>
+            <div class="ml-3">
+              <div class="text-base font-medium text-white">
+                <% if current_user.first_name.present? && current_user.last_name.present? %>
+                  <%= "#{current_user.first_name} #{current_user.last_name}" %>
+                <% else %>
+                  <%= current_user.email.split('@').first %>
+                <% end %>
+              </div>
+              <div class="text-sm font-medium text-white/70"><%= current_user.email %></div>
+              <div class="flex mt-1 space-x-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium
+                  <%= current_user.admin? ? 'bg-pink-400 text-white' : 'bg-green-400 text-white' %>">
+                  <%= current_user.role.capitalize %>
+                </span>
+                <% if current_user.status.present? %>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium
+                    <%= current_user.status == 'active' ? 'bg-green-400 text-white' : 'bg-gray-400 text-white' %>">
+                    <%= current_user.status.capitalize %>
+                  </span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 space-y-1">
+            <%= link_to edit_user_registration_path, class: "flex items-center px-3 py-2 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              My Profile
+            <% end %>
+
+            <%= link_to orders_path, class: "flex items-center px-3 py-2 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              My Orders
+            <% end %>
+
+            <%= link_to addresses_path, class: "flex items-center px-3 py-2 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              My Addresses
+            <% end %>
+
+            <% if current_user.admin? %>
+              <div class="mt-3 mb-2 border-t border-white/10 pt-3">
+                <p class="px-3 text-xs font-semibold text-white/50 uppercase tracking-wider">Admin Area</p>
+
+                <%= link_to admin_root_path, class: "flex items-center px-3 py-2 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Dashboard
+                <% end %>
+
+                <%= link_to admin_users_path, class: "flex items-center px-3 py-2 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                  Users
+                <% end %>
+
+                <%= link_to admin_products_path, class: "flex items-center px-3 py-2 text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-150" do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                  Products
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-white/10">
+            <%= button_to destroy_user_session_path, method: :delete, class: "w-full flex items-center justify-center px-4 py-3 rounded-md text-white bg-pink-600 hover:bg-pink-700 transition duration-150" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              Sign Out
+            <% end %>
+          </div>
+        <% else %>
+          <div class="mt-3 space-y-3">
+            <%= link_to new_user_session_path, class: "w-full flex items-center justify-center px-4 py-3 rounded-md text-sm font-medium text-white bg-white/20 hover:bg-white/30 transition duration-150" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Sign In
+            <% end %>
+
+            <%= link_to new_user_registration_path, class: "w-full flex items-center justify-center px-4 py-3 rounded-md text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 transition duration-150" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
+              </svg>
+              Sign Up
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="flex-shrink-0 w-14" aria-hidden="true">
+      <!-- Dummy element to force sidebar to shrink to fit close icon -->
+    </div>
+  </div>
+
+  <!-- Mobile menu button -->
+  <div class="flex items-center lg:hidden">
+    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 focus:outline-none transition duration-150"
+            data-action="click->mobile-menu#open">
+      <span class="sr-only">Open main menu</span>
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</div>

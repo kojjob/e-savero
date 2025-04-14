@@ -1,0 +1,185 @@
+<%# app/views/pages/faq.html.erb %>
+<% content_for :title, "Frequently Asked Questions | E-Savero" %>
+<% content_for :meta_description, "Find answers to common questions about shopping, orders, shipping, returns, and more." %>
+
+<div class="bg-white dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+    <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+      <div>
+        <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white">
+          Frequently asked questions
+        </h1>
+        <p class="mt-4 text-lg text-gray-500 dark:text-gray-300">
+          Can't find the answer you're looking for? Reach out to our
+          <%= link_to "customer support team", "/contact", class: "font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300" %>.
+        </p>
+      </div>
+      <div class="mt-12 lg:mt-0 lg:col-span-2">
+        <div class="space-y-12" data-controller="faq-accordion">
+          <!-- Account & Ordering -->
+          <div class="space-y-6">
+            <h2 class="text-lg font-medium text-gray-900 dark:text-white">Account & Ordering</h2>
+
+            <div class="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+              <div class="space-y-4 divide-y divide-gray-200 dark:divide-gray-700">
+                <!-- FAQ Item -->
+                <div data-controller="accordion-item">
+                  <button class="w-full px-4 py-3 flex justify-between items-center text-left focus:outline-none bg-white dark:bg-gray-800" data-action="accordion-item#toggle">
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">How do I create an account?</span>
+                    <svg data-accordion-item-target="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div data-accordion-item-target="content" class="hidden px-4 py-3 bg-gray-50 dark:bg-gray-700">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Creating an account is simple. Click on the "Sign Up" button in the top-right corner of the page, fill in your details, and follow the instructions to verify your email address. Once verified, you can log in and start shopping!
+                    </p>
+                  </div>
+                </div>
+
+                <!-- FAQ Item -->
+                <div data-controller="accordion-item">
+                  <button class="w-full px-4 py-3 flex justify-between items-center text-left focus:outline-none bg-white dark:bg-gray-800" data-action="accordion-item#toggle">
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">How do I place an order?</span>
+                    <svg data-accordion-item-target="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div data-accordion-item-target="content" class="hidden px-4 py-3 bg-gray-50 dark:bg-gray-700">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Browse our products, select the items you'd like to purchase, and add them to your cart. When you're ready to check out, click on the cart icon, review your items, and proceed to checkout. Follow the steps to enter your shipping and payment information, and place your order.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- FAQ Item -->
+                <div data-controller="accordion-item">
+                  <button class="w-full px-4 py-3 flex justify-between items-center text-left focus:outline-none bg-white dark:bg-gray-800" data-action="accordion-item#toggle">
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">Can I change or cancel my order?</span>
+                    <svg data-accordion-item-target="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div data-accordion-item-target="content" class="hidden px-4 py-3 bg-gray-50 dark:bg-gray-700">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      You can change or cancel your order within 1 hour of placing it. Please contact our customer service team immediately with your order number. After this period, your order may have already been processed and cannot be changed or canceled.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping & Delivery -->
+          <div class="space-y-6">
+            <h2 class="text-lg font-medium text-gray-900 dark:text-white">Shipping & Delivery</h2>
+
+            <div class="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+              <div class="space-y-4 divide-y divide-gray-200 dark:divide-gray-700">
+                <!-- FAQ Item -->
+                <div data-controller="accordion-item">
+                  <button class="w-full px-4 py-3 flex justify-between items-center text-left focus:outline-none bg-white dark:bg-gray-800" data-action="accordion-item#toggle">
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">What are your shipping options?</span>
+                    <svg data-accordion-item-target="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div data-accordion-item-target="content" class="hidden px-4 py-3 bg-gray-50 dark:bg-gray-700">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      We offer several shipping options:
+                    </p>
+                    <ul class="mt-2 list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+                      <li>Standard Shipping (3-5 business days)</li>
+                      <li>Express Shipping (2-3 business days)</li>
+                      <li>Next-Day Shipping (order by 2 PM EST for delivery the next business day)</li>
+                    </ul>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                      Shipping costs vary based on the shipping method and destination. All shipping options and costs will be displayed during checkout.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- FAQ Item -->
+                <div data-controller="accordion-item">
+                  <button class="w-full px-4 py-3 flex justify-between items-center text-left focus:outline-none bg-white dark:bg-gray-800" data-action="accordion-item#toggle">
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">How can I track my order?</span>
+                    <svg data-accordion-item-target="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div data-accordion-item-target="content" class="hidden px-4 py-3 bg-gray-50 dark:bg-gray-700">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Once your order ships, you will receive an email with tracking information. You can also log in to your account and view your order status and tracking information from your order history.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Returns & Refunds -->
+          <div class="space-y-6">
+            <h2 class="text-lg font-medium text-gray-900 dark:text-white">Returns & Refunds</h2>
+
+            <div class="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+              <div class="space-y-4 divide-y divide-gray-200 dark:divide-gray-700">
+                <!-- FAQ Item -->
+                <div data-controller="accordion-item">
+                  <button class="w-full px-4 py-3 flex justify-between items-center text-left focus:outline-none bg-white dark:bg-gray-800" data-action="accordion-item#toggle">
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">What is your return policy?</span>
+                    <svg data-accordion-item-target="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div data-accordion-item-target="content" class="hidden px-4 py-3 bg-gray-50 dark:bg-gray-700">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      We offer a 30-day return policy. If you're not satisfied with your purchase, you can return it within 30 days of receipt for a full refund. Items must be in their original condition and packaging. Please note that some items, such as personalized products, may not be eligible for return.
+                    </p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                      For more details, please view our <%= link_to "Returns", "/returns", class: "text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300" %> page.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- FAQ Item -->
+                <div data-controller="accordion-item">
+                  <button class="w-full px-4 py-3 flex justify-between items-center text-left focus:outline-none bg-white dark:bg-gray-800" data-action="accordion-item#toggle">
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">How do I process a return?</span>
+                    <svg data-accordion-item-target="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div data-accordion-item-target="content" class="hidden px-4 py-3 bg-gray-50 dark:bg-gray-700">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      To process a return, log in to your account, go to your order history, and select the order containing the item(s) you wish to return. Click on "Return Items" and follow the instructions to generate a return label and return authorization. Once we receive and inspect your return, we will process your refund.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- FAQ Item -->
+                <div data-controller="accordion-item">
+                  <button class="w-full px-4 py-3 flex justify-between items-center text-left focus:outline-none bg-white dark:bg-gray-800" data-action="accordion-item#toggle">
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">How long do refunds take?</span>
+                    <svg data-accordion-item-target="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div data-accordion-item-target="content" class="hidden px-4 py-3 bg-gray-50 dark:bg-gray-700">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Refunds are processed within 3-5 business days after we receive and inspect your return. The time it takes for the refund to appear in your account depends on your payment method and financial institution:
+                    </p>
+                    <ul class="mt-2 list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+                      <li>Credit cards: 3-7 business days</li>
+                      <li>Debit cards: 5-10 business days</li>
+                      <li>Store credit: Immediate</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

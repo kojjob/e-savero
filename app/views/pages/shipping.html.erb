@@ -1,0 +1,94 @@
+<%# app/views/pages/shipping.html.erb %>
+<% content_for :title, "Shipping Information | E-Savero" %>
+<% content_for :meta_description, "Learn about our shipping policies, delivery times, and shipping options at E-Savero." %>
+
+<div class="bg-white dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+        Shipping Information
+      </h1>
+      <p class="mt-4 text-lg leading-6 text-gray-500 dark:text-gray-300">
+        Everything you need to know about our shipping policies and delivery options.
+      </p>
+    </div>
+
+    <div class="mt-12 max-w-3xl mx-auto">
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Shipping Options</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              We offer several shipping options to meet your needs:
+            </p>
+            <ul>
+              <li><strong>Standard Shipping:</strong> 5-7 business days (Free on orders over $50)</li>
+              <li><strong>Express Shipping:</strong> 2-3 business days ($9.99)</li>
+              <li><strong>Next Day Shipping:</strong> Next business day if ordered before 2pm ($19.99)</li>
+            </ul>
+            <p>
+              Shipping times are estimates and begin from the date of shipment, not the date of order.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Delivery Areas</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              We currently ship to all 50 United States, Canada, and select international destinations.
+              International shipping rates and delivery times vary by location.
+            </p>
+            <p>
+              For international orders, please note that you may be responsible for duties, taxes, and customs clearance fees.
+              These are not included in the price of the items or shipping cost.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Order Tracking</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              Once your order ships, you will receive a shipping confirmation email with a tracking number.
+              You can track your package's status at any time by:
+            </p>
+            <ul>
+              <li>Logging into your account and viewing your order history</li>
+              <li>Clicking the tracking link in your shipping confirmation email</li>
+              <li>Contacting our customer service team</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Shipping Delays</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              While we strive to deliver all orders on time, occasionally delays may occur due to:
+            </p>
+            <ul>
+              <li>Severe weather conditions</li>
+              <li>Carrier service disruptions</li>
+              <li>Customs processing for international orders</li>
+              <li>High volume periods (holidays, special promotions)</li>
+            </ul>
+            <p>
+              We will notify you of any significant delays affecting your order.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Contact Us</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              If you have any questions about shipping or need assistance with tracking your order,
+              please don't hesitate to <%= link_to "contact us", "/contact", class: "text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300" %>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

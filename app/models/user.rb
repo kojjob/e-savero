@@ -9,19 +9,24 @@ class User < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :reviews
   has_many :addresses
+  has_one :cart, dependent: :destroy
+  has_one_attached :avatar
 
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
-  validates :password_digest, presence: true, length: { minimum: 6 }
-  validates :session_token, presence: true, uniqueness: true
+  after_create :create_cart
 
-  attr_reader :password
+  # User avatar methods
+  def avatar_url
+    if avatar.attached?
+      # Change this URL to match your application's URL for avatar display
+      # For example, using Rails routes to ActiveStorage attachments
+      Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true)
+    else
+      nil
+    end
+  end
 
-  after_initialize :ensure_session_token
-
-  def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
-    return nil unless user && user.is_password?(password)
-    user
+  def has_avatar?
+    avatar.attached?
   end
 
   private

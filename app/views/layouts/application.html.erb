@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html class="light" data-theme="light">
   <head>
-    <title><%= content_for(:title) || "E Savero" %></title>
+    <title><%= content_for(:title) || @page_title || "E Savero" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= content_for(:meta_description) || @meta_description || 'E Savero - Your premium online shopping destination' %>">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -18,13 +19,77 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
+    <%= render "shared/dark_mode_styles" %>
+    
+    <script>
+      // Theme initialization script - runs immediately to avoid flash of incorrect theme
+      (function() {
+        // Check for saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        
+        // Apply the theme immediately to avoid flash
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    
+    <style>
+      /* Custom styles to ensure header dropdowns are visible above all other content */
+      .header-container {
+        position: relative;
+        z-index: 100; /* Higher than any other element on the page */
+      }
+      
+      /* Ensure landing page sections have a lower z-index */
+      .landing-page section {
+        position: relative;
+        z-index: 10;
+      }
+      
+      /* Fix for header dropdown menus */
+      [data-header-dropdown-target="menu"] {
+        z-index: 999 !important; /* Force highest z-index for dropdowns */
+      }
+      
+      /* Badge for cart should appear above cart icon */
+      .cart-badge {
+        z-index: 2;
+      }
+      
+      /* Better ordering of header elements */
+      #user-profile-dropdown {
+        position: relative;
+        z-index: 105; /* Higher than other header elements */
+      }
+      
+      /* Ensure user dropdown menu is above all elements */
+      #user-profile-dropdown [data-header-dropdown-target="menu"] {
+        z-index: 1000 !important; /* Force highest z-index for user dropdown */
+      }
+    </style>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="<%= content_for(:body_class) %>" data-controller="dropdown-interactions">
+    <div class="header-container">
+      <%= render "shared/header" %>
+    </div>
+    <%= render "shared/flash_msg" %>
+    <main class="min-h-screen mx-auto">
       <%= yield %>
     </main>
+    <%= render "shared/footer" %>
   </body>
 </html>

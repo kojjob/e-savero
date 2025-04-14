@@ -1,0 +1,109 @@
+<%# app/views/pages/returns.html.erb %>
+<% content_for :title, "Returns & Refunds | E-Savero" %>
+<% content_for :meta_description, "Learn about our return policy, refund process, and how to initiate a return at E-Savero." %>
+
+<div class="bg-white dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+        Returns & Refunds
+      </h1>
+      <p class="mt-4 text-lg leading-6 text-gray-500 dark:text-gray-300">
+        Our hassle-free return policy ensures your satisfaction with every purchase.
+      </p>
+    </div>
+
+    <div class="mt-12 max-w-3xl mx-auto">
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Return Policy</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              We want you to be completely satisfied with your purchase. If you're not, we offer a simple return process:
+            </p>
+            <ul>
+              <li>Returns accepted within 30 days of delivery</li>
+              <li>Items must be unused, unworn, and in original packaging</li>
+              <li>Original receipt or proof of purchase required</li>
+              <li>Gift returns will be issued as store credit equal to the purchase price</li>
+            </ul>
+            <p>
+              Some items cannot be returned, including:
+            </p>
+            <ul>
+              <li>Personalized or custom-made items</li>
+              <li>Digital products</li>
+              <li>Gift cards</li>
+              <li>Personal care items that have been opened</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">How to Initiate a Return</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              To start your return:
+            </p>
+            <ol>
+              <li>Log into your account and go to your order history</li>
+              <li>Select the order and items you wish to return</li>
+              <li>Follow the prompts to generate a return shipping label</li>
+              <li>Package your items securely in their original packaging if possible</li>
+              <li>Attach the return shipping label to your package</li>
+              <li>Drop off your package at any authorized shipping location</li>
+            </ol>
+            <p>
+              If you received a damaged or defective item, please contact our customer service team immediately.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Refund Process</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              Once we receive your return:
+            </p>
+            <ul>
+              <li>We'll inspect the items to ensure they meet our return policy requirements</li>
+              <li>Approved returns will be processed within 3-5 business days</li>
+              <li>Refunds will be issued to the original payment method</li>
+              <li>You'll receive an email notification when your refund is processed</li>
+            </ul>
+            <p>
+              Please note that it may take 5-10 business days for the refund to appear in your account, depending on your financial institution.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Return Shipping</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              For standard returns, a flat return shipping fee of $7.95 will be deducted from your refund.
+            </p>
+            <p>
+              Return shipping is free for:
+            </p>
+            <ul>
+              <li>Defective or damaged items</li>
+              <li>Incorrect items shipped</li>
+              <li>Items specifically marked "Free Returns"</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Contact Us</h2>
+          <div class="mt-4 prose prose-indigo dark:prose-invert">
+            <p>
+              If you have any questions about our return policy or need assistance with a return,
+              please <%= link_to "contact our customer service team", "/contact", class: "text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300" %>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
